@@ -9,16 +9,16 @@ counter = []
 
 char = sorted(char)
 
-# for i, val in enumerate(char):
-#     counter.append([])
-#     for j, val2 in enumerate(char):
-#         counter[i].append(input(val + '-->' + val2 + ': '))
-#
-# counterframe = pd.DataFrame(counter, index=char, columns=char)
-#
-# outfile = open(path + 'counter', 'w+')
-# outfile.write(counterframe.to_json(orient="split"))
-# outfile.close()
+for i, val in enumerate(char):
+    counter.append([])
+    for j, val2 in enumerate(char):
+        counter[i].append(input(val + '-->' + val2 + ': '))
+
+counterframe = pd.DataFrame(counter, index=char, columns=char)
+
+outfile = open(path + 'counter', 'w+')
+outfile.write(counterframe.to_json(orient="split"))
+outfile.close()
 
 cyn = []
 
