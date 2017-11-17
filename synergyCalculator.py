@@ -7,7 +7,9 @@ import json
 import pandas as pd
 import numpy as np
 import os
+import time
 from operator import add
+tmps1=time.clock()
 path = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__))) + '/'
 char = ['doo','rea','gen','mcc','pha','sol','som','tra','roa','dva','ori','rei','win','zar','bas','jun','wid','han','mei','tor','ana','mer','luc','moi','sym','zen']
@@ -33,6 +35,8 @@ def calculSynergy(team):
 i=0
 outfile = open(path + 'teamsyn', 'w+')
 
+tabtemp = []
+
 for a in range(nb-5):
 	for b in range(a+1,nb-4):
 		for c in range(b+1,nb-3):
@@ -41,10 +45,16 @@ for a in range(nb-5):
 					for f in range(e+1,nb):
 						team = [char[a],char[b],char[c],char[d],char[e],char[f]]
 						score = calculSynergy(team)
-						outfile.write(char[a]+","+char[b]+","+char[c]+","+char[d]+","+char[e]+","+char[f]+" : " + str(score) + "\n")
-						i+=1;
-						print (i)
+						tabtemp.append((char[a]+","+char[b]+","+char[c]+","+char[d]+","+char[e]+","+char[f], score))
+						#i+=1;
+						#print (i)
+
 						
-outfile.close()	        
+tabtemp = sorted(tabtemp, key=lambda colonnes: colonnes[1], reverse=True)
+for l in tabtemp:
+	outfile.write(l[0]+" : " + str(l[1]) + "\n")						
+outfile.close()	
+
 		
-		
+tmps2=time.clock()
+print(str(tmps2-tmps1))
