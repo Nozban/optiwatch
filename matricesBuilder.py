@@ -1,5 +1,5 @@
 # Created By Etienne Brangbour in november 2017
-# 
+#
 # manualy input the matrices, just used for test.
 
 import json
@@ -46,8 +46,6 @@ for i, val in enumerate(char):
         else:
             syn[i].append(input(val + ' and ' + val2 + ': '))
 
-
-		
 
 synframe = pd.DataFrame(syn, index=char, columns=char)
 
