@@ -1,3 +1,4 @@
-This application requires python 3.5 and python module Pandas
+This application requires python 3.5 with the command 'python' in path and python module pandas, pillow, keyboard, opencv
 
-Pandas can be instaled with command : python -m pip install pandas
+Modules can be instaled with command : python -m pip install "module"
+except opencv. a distribution will be provided directly in optiwatch.
