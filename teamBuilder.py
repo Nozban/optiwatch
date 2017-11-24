@@ -15,8 +15,6 @@ path = os.path.realpath(
 		os.path.join(os.getcwd(), os.path.dirname(__file__))) + os.path.sep
 
 def teambuilder(opp,battletype):
-	
-
 	coefsyn = 0.5
 	counter = pd.read_json(path+'counter',orient='split')
 	bonus = pd.read_json(path+'bonus',orient='split')
@@ -47,10 +45,10 @@ def teambuilder(opp,battletype):
 			break;
 	return best
 
-opp = ['gen','mei','sol','tra','sym','mer']
-best = teambuilder(opp,'attpoint')
+# opp = ['gen','mei','sol','tra','sym','mer']
+# best = teambuilder(opp,'attpoint')
 
-print(str(best))
-tmps2=time.clock()
-print(str(tmps2-tmps1))
+# print(str(best))
+# tmps2=time.clock()
+# print(str(tmps2-tmps1))
 
