@@ -21,6 +21,11 @@ path = os.path.realpath(
 def detect():		
 	keyboard.wait('tab+enter')
 	im = ImageGrab.grab()
+	basewidth = 800
+	wpercent = (basewidth / float(im.size[0]))
+	hsize = int((float(im.size[1]) * float(wpercent)))
+	im = im.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+	im=im.crop((0,0,basewidth,hsize/2))
 	im.save('images'+os.path.sep+'sc.jpg', 'JPEG')
 	res=[]
 	im = cv2.imread(path+'images'+os.path.sep+'sc.jpg')
@@ -42,12 +47,22 @@ def detect():
 	return res
 	
 #print(str(res))
-    
+ 
 
-im = ImageGrab.grab()
-im.resize(600,800)
-im.save('images'+os.path.sep+'loul.jpg', 'JPEG')
+# keyboard.wait('x') 
 
-keyboard.wait('x')
+# im = ImageGrab.grab()
+# basewidth = 800
+# wpercent = (basewidth / float(im.size[0]))
+# hsize = int((float(im.size[1]) * float(wpercent)))
+# im = im.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+# im=im.crop((0,0,basewidth,hsize/2))
+# im.save('images'+os.path.sep+'loul.jpg', 'JPEG')
+
+# for i in range(6):
+	# base = 184
+	# ah=im.crop((base+i*80,114,base+i*80+32,114+32))
+	# ah.save('images'+os.path.sep+'loul'+str(i)+'.jpg', 'JPEG')
+
 
 

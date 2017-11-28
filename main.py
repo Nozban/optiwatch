@@ -9,3 +9,4 @@ else:
 	print('detected opponent team : '+str(oppteam) )
 	team = teambuilder(oppteam,'attescort')
 	print(str(team))
+	keyboard.write(str(team))
