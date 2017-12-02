@@ -10,10 +10,10 @@ def main():
 		print('3:attaque point')
 		print('4:defence point')
 		print('5:double attaque')
-		print('x:Exit')
-		k = keyboard.read_key()
+		print('9:Exit')
 		battletype = None
 		while battletype == None:
+			k = keyboard.read_key()
 			if str(k)=='KeyboardEvent(1 down)':
 				print('1:attaque escort')
 				battletype='attescort'
@@ -29,7 +29,7 @@ def main():
 			elif str(k)=='KeyboardEvent(5 down)':
 				print('5:double attaque')
 				battletype='double'
-			elif str(k)=='KeyboardEvent(x down)':
+			elif str(k)=='KeyboardEvent(9 down)':
 				return
 
 		oppteam = 'detection error'
