@@ -11,32 +11,45 @@ char = ['doo','rea','gen','mcc','pha','sol','som','tra','roa','dva','ori','rei',
 battletype = ['attescort','defescort','attpoint','defpoint','dual']
 
 counter = []
-bonus = []
+# bonus = []
 char = sorted(char)
 
-for i in battletype:
-	row = []
-	for j in char:
-		row.append(0)
-	bonus.append(row)
+# for i in battletype:
+	# row = []
+	# for j in char:
+		# row.append(0)
+	# bonus.append(row)
 
-bonusframe = pd.DataFrame(bonus, index=battletype, columns=char)
-outfile = open(path + 'bonus', 'w+')
-outfile.write(bonusframe.to_json(orient="split"))
-outfile.close()
+# bonusframe = pd.DataFrame(bonus, index=battletype, columns=char)
+# outfile = open(path + 'bonus', 'w+')
+# outfile.write(bonusframe.to_json(orient="split"))
+# outfile.close()
 
-for i, val in enumerate(char):
-    counter.append([])
-    for j, val2 in enumerate(char):
-        counter[i].append(input(val + '-->' + val2 + ': '))
+# for i, val in enumerate(char):
+    # counter.append([])
+    # for j, val2 in enumerate(char):
+        # counter[i].append(input(val + '-->' + val2 + ': '))
 
-counterframe = pd.DataFrame(counter, index=char, columns=char)
+# counterframe = pd.DataFrame(counter, index=char, columns=char)
 
-outfile = open(path + 'counter', 'w+')
-outfile.write(counterframe.to_json(orient="split"))
-outfile.close()
+# outfile = open(path + 'counter', 'w+')
+# outfile.write(counterframe.to_json(orient="split"))
+# outfile.close()
 
-syn = []
+# syn = []
+
+# for i, val in enumerate(char):
+    # syn.append([])
+    # for j, val2 in enumerate(char):
+        # if(j<=i):
+            # syn[i].append(0)
+        # else:
+            # syn[i].append(input(val + ' and ' + val2 + ': '))
+
+
+# synframe = pd.DataFrame(syn, index=char, columns=char)
+
+tempcounter = pandas.DataFrame.from_csv(path+'matrices\contre.csv')
 
 for i, val in enumerate(char):
     syn.append([])
@@ -46,8 +59,6 @@ for i, val in enumerate(char):
         else:
             syn[i].append(input(val + ' and ' + val2 + ': '))
 
-
-synframe = pd.DataFrame(syn, index=char, columns=char)
 
 outfile = open(path + 'syn', 'w+')
 outfile.write(synframe.to_json(orient="split"))
