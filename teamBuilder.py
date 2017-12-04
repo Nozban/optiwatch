@@ -14,7 +14,7 @@ char = sorted(char)
 path = os.path.realpath(
 		os.path.join(os.getcwd(), os.path.dirname(__file__))) + os.path.sep
 
-def teambuilder(opp,battletype):
+def teambuilder(opp,all,battletype):
 	coefsyn = 0.5
 	counter = pd.read_json(path+'counter',orient='split')
 	bonus = pd.read_json(path+'bonus',orient='split')
@@ -33,16 +33,17 @@ def teambuilder(opp,battletype):
 		lineTab = line.split(" : ")
 		score = int(lineTab[1])*coefsyn
 		teamtab = lineTab[0].split(',')
-		for c in teamtab:
-			score += scores[c]
-		if score>max:
-			max=score
-			best = []
-			best.append(lineTab[0])
-		elif score == max:
-			best.append(lineTab[0])
-		if  max > maxCounter+int(lineTab[1])*coefsyn:
-			break;
+		if set(all).issubset(teamtab):
+			for c in teamtab:
+				score += scores[c]
+			if score>max:
+				max=score
+				best = []
+				best.append(lineTab[0])
+			elif score == max:
+				best.append(lineTab[0])
+			if  max > maxCounter+int(lineTab[1])*coefsyn:
+				break;
 	return best
 
 # opp = ['gen','mei','sol','tra','sym','mer']
