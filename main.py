@@ -3,6 +3,7 @@ from teamBuilder import teambuilder
 import keyboard
 
 def main():
+	teamsize = 0
 	while true
 		print('------Welcome to optiwatch ------')
 		print('Enter the size of your team:')
@@ -10,8 +11,9 @@ def main():
 		teamsize = int(str(k)[:1])
 		print(teamsize)
 		if(teamsize>0 or teamsize<7):
+			
 			break
-		else
+		else:
 			print'error : size out of range'
 			
 	while True:
@@ -47,13 +49,13 @@ def main():
 
 		while oppteam == 'detection error':
 			print('press tab + enter')
-			oppteam = detect()
-			if oppteam == 'detection error':
-				print(oppteam)
-				keyboard.write(oppteam)
+			teams = detect(teamsize)
+			if teams == 'detection error':
+				print(teams)
+				keyboard.write(teams)
 
-		print('detected opponent team : '+str(oppteam) )
-		team = teambuilder(oppteam,battletype)
+		print('detected opponent team : '+str(teams[0]) )
+		team = teambuilder(teams,battletype)
 		print(str(team))
 		keyboard.write(str(team))
 
