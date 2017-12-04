@@ -3,6 +3,17 @@ from teamBuilder import teambuilder
 import keyboard
 
 def main():
+	while true
+		print('------Welcome to optiwatch ------')
+		print('Enter the size of your team:')
+		k = keyboard.read_key()
+		teamsize = int(str(k)[:1])
+		print(teamsize)
+		if(teamsize>0 or teamsize<7):
+			break
+		else
+			print'error : size out of range'
+			
 	while True:
 		print('------Select Battletype------')
 		print('1:attaque escort')
