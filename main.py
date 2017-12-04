@@ -55,7 +55,7 @@ def main():
 				keyboard.write(teams)
 
 		print('detected opponent team : '+str(teams[0]) )
-		team = teambuilder(teams,battletype)
+		team = teambuilder(teams[0],teams[1],battletype)
 		print(str(team))
 		keyboard.write(str(team))
 
