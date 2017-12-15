@@ -37,7 +37,7 @@ def detect(teamsize):
 
 	for c in char:
 		template = cv2.imread(path+'images'+os.path.sep+c+'.jpg')
-		temp = cv2.matchTemplate(im, template, cv2.TM_CCOEFF_NORMED)
+		temp = cv2.matchTemplate(im1, template, cv2.TM_CCOEFF_NORMED)
 		temp2 = cv2.matchTemplate(im2, template, cv2.TM_CCOEFF_NORMED)
 
 		threshold = 0.8

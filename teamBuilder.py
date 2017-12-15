@@ -16,17 +16,18 @@ path = os.path.realpath(
 
 def teambuilder(opp,all,battletype):
 	coefsyn = 0.5
-	counter = pd.read_json(path+'counter',orient='split')
-	bonus = pd.read_json(path+'bonus',orient='split')
+	coefbonus = 0.5
+	counter = pd.read_json(path+'matrices\\counter',orient='split')
+	bonus = pd.read_csv(path+'matrices\\bonus.csv',index_col=0)
+	print(bonus)
 	scores = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
-	
 	for val in opp:
 		scores = scores + counter[val].values
 		scores = scores + bonus.loc[battletype].values
-
 	maxCounter = sum(sorted(scores, reverse=True)[0:6])
 	scores = dict(zip(char, scores))
-	infile = open(path + 'teamsyn', 'r+')
+	print(scores)
+	infile = open(path + 'matrices\\teamsyn', 'r+')
 	max = float('-inf')
 	best = []
 	for line in infile:
@@ -44,10 +45,10 @@ def teambuilder(opp,all,battletype):
 				best.append(lineTab[0])
 			if  max > maxCounter+int(lineTab[1])*coefsyn:
 				break;
-	return best
-
-# opp = ['gen','mei','sol','tra','sym','mer']
-# best = teambuilder(opp,'attpoint')
+	return (best, max)
+# all = []
+# opp = ['gen','som','luc','tra','sym','mer']
+# best = teambuilder(opp,all,'attpoint')
 
 # print(str(best))
 # tmps2=time.clock()

@@ -1,21 +1,20 @@
 from detector import detect
 from teamBuilder import teambuilder
 import keyboard
-
+import os
 def main():
 	teamsize = 0
-	while true
+	while True:
 		print('------Welcome to optiwatch ------')
 		print('Enter the size of your team:')
 		k = keyboard.read_key()
-		teamsize = int(str(k)[:1])
+		teamsize = int(str(k)[14])
 		print(teamsize)
-		if(teamsize>0 or teamsize<7):
-			
+		if(teamsize>0 or teamsize<7):			
 			break
 		else:
-			print'error : size out of range'
-			
+			print('error : size out of range')
+	os.system('cls')	
 	while True:
 		print('------Select Battletype------')
 		print('1:attaque escort')
@@ -45,18 +44,21 @@ def main():
 			elif str(k)=='KeyboardEvent(9 down)':
 				return
 
-		oppteam = 'detection error'
+		teams = 'detection error'
 
-		while oppteam == 'detection error':
+		while teams == 'detection error':
 			print('press tab + enter')
 			teams = detect(teamsize)
 			if teams == 'detection error':
 				print(teams)
 				keyboard.write(teams)
-
+		os.system('cls')
 		print('detected opponent team : '+str(teams[0]) )
-		team = teambuilder(teams[0],teams[1],battletype)
-		print(str(team))
+		print('detected allied team : '+str(teams[1]) )
+		(team, score) = teambuilder(teams[0],teams[1],battletype)
+		print('opptimal teams calculated : '+str(team)+':'+str(score))
 		keyboard.write(str(team))
+		keyboard.wait('enter')
+		os.system('cls')
 
 main()
