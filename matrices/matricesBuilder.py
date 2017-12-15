@@ -49,7 +49,7 @@ char = sorted(char)
 
 # synframe = pd.DataFrame(syn, index=char, columns=char)
 
-tempcounter = pd.read_csv(path+'contre.csv')
+tempcounter = pd.read_csv(path+'contre.csv',index_col=0)
 c=[]
 for i, val in enumerate(char):
     c.append([])
