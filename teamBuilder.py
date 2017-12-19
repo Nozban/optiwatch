@@ -15,11 +15,10 @@ path = os.path.realpath(
 		os.path.join(os.getcwd(), os.path.dirname(__file__))) + os.path.sep
 
 def teambuilder(opp,all,battletype):
-	coefsyn = 0.5
+	coefsyn = 0.3
 	coefbonus = 0.5
 	counter = pd.read_json(path+'matrices\\counter',orient='split')
 	bonus = pd.read_csv(path+'matrices\\bonus.csv',index_col=0)
-	print(bonus)
 	scores = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 	for val in opp:
 		scores = scores + counter[val].values

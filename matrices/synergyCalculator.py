@@ -27,9 +27,9 @@ syn = pd.read_json(path+'syn',orient='split')
 
 def calculSynergy(team):
 	score = 0
-	for char in team:
-		score += sum(syn[char].values)
-		score += sum(syn.loc[char].values)
+	for i, c in enumerate(team):
+		for c2 in team[i+1:]:
+			score+=syn[c][c2]
 	return score
 
 i=0
@@ -46,8 +46,8 @@ for a in range(nb-5):
 						team = [char[a],char[b],char[c],char[d],char[e],char[f]]
 						score = calculSynergy(team)
 						tabtemp.append((char[a]+","+char[b]+","+char[c]+","+char[d]+","+char[e]+","+char[f], score))
-						#i+=1;
-						#print (i)
+						i+=1;
+						print (i)
 
 						
 tabtemp = sorted(tabtemp, key=lambda colonnes: colonnes[1], reverse=True)

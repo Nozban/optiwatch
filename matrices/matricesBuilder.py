@@ -1,6 +1,5 @@
 # Created By Etienne Brangbour in november 2017
 #
-# manualy input the matrices, just used for test.
 
 import json
 import pandas as pd
@@ -11,43 +10,7 @@ char = ['doo','rea','gen','mcc','pha','sol','som','tra','roa','dva','ori','rei',
 battletype = ['attescort','defescort','attpoint','defpoint','dual']
 
 counter = []
-# bonus = []
 char = sorted(char)
-
-# for i in battletype:
-	# row = []
-	# for j in char:
-		# row.append(0)
-	# bonus.append(row)
-
-# bonusframe = pd.DataFrame(bonus, index=battletype, columns=char)
-# outfile = open(path + 'bonus', 'w+')
-# outfile.write(bonusframe.to_json(orient="split"))
-# outfile.close()
-
-# for i, val in enumerate(char):
-    # counter.append([])
-    # for j, val2 in enumerate(char):
-        # counter[i].append(input(val + '-->' + val2 + ': '))
-
-# counterframe = pd.DataFrame(counter, index=char, columns=char)
-
-# outfile = open(path + 'counter', 'w+')
-# outfile.write(counterframe.to_json(orient="split"))
-# outfile.close()
-
-# syn = []
-
-# for i, val in enumerate(char):
-    # syn.append([])
-    # for j, val2 in enumerate(char):
-        # if(j<=i):
-            # syn[i].append(0)
-        # else:
-            # syn[i].append(input(val + ' and ' + val2 + ': '))
-
-
-# synframe = pd.DataFrame(syn, index=char, columns=char)
 
 tempcounter = pd.read_csv(path+'contre.csv',index_col=0)
 c=[]
@@ -63,4 +26,20 @@ cframe = pd.DataFrame(c, index=char, columns=char)
 print(cframe)
 outfile = open(path + 'counter', 'w+')
 outfile.write(cframe.to_json(orient="split"))
+outfile.close()
+
+tempsyn = pd.read_csv(path+'synergy.csv',index_col=0)
+s=[]
+for i, val in enumerate(char):
+    s.append([])
+    for j, val2 in enumerate(char):
+        if(j<=i):
+            s[i].append(tempsyn[val2][val])
+        else:
+            s[i].append(tempsyn[val][val2])
+
+sframe = pd.DataFrame(s, index=char, columns=char)
+print(sframe)
+outfile = open(path + 'syn', 'w+')
+outfile.write(sframe.to_json(orient="split"))
 outfile.close()
