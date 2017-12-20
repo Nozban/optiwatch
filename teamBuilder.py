@@ -38,10 +38,7 @@ def teambuilder(opp,all,battletype):
 				score += scores[c]
 			if score>max:
 				max=score
-				best = []
-				best.append(lineTab[0])
-			elif score == max:
-				best.append(lineTab[0])
+				best=teamtab
 			if  max > maxCounter+int(lineTab[1])*coefsyn:
 				break;
 	return (best, max)
