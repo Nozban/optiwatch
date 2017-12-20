@@ -57,19 +57,7 @@ def detect(teamsize):
  
 
 # keyboard.wait('x') 
-# for j in range(1,13):
-	# im = Image.open(path+'images'+os.path.sep+"screenshot"+str(j)+".jpg")
-	# basewidth = 800
-	# wpercent = (basewidth / float(im.size[0]))
-	# hsize = int((float(im.size[1]) * float(wpercent)))
-	# im = im.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-	# #im=im.crop((0,0,basewidth,hsize/2))
-	# im.save('images'+os.path.sep+'loul.jpg', 'JPEG')
-	# #114
-	# for i in range(6):
-		# base = 184
-		# ah=im.crop((base+i*80,241,base+i*80+32,241+32))
-		# ah.save('images'+os.path.sep+'loul'+str(j)+str(i)+'.jpg', 'JPEG')
+
 
 
 
