@@ -58,8 +58,6 @@ def main():
 		(team, score) = teambuilder(teams[0],teams[1],battletype)
 		print('opptimal teams calculated : '+str(team)+':'+str(score))
 		esq = list(set(team)-set(teams[1]))
-		print(team)
-		print(teams[1])
 		print('esquade : '+str(esq))
 		keyboard.write(str(team))
 		keyboard.wait('enter')
