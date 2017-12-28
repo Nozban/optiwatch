@@ -2,6 +2,7 @@ from detector import detect
 from teamBuilder import teambuilder
 import keyboard
 import os
+import time
 def main():
 	teamsize = 0
 	while True:
@@ -48,6 +49,8 @@ def main():
 
 		while teams == 'detection error':
 			print('press tab + enter')
+			keyboard.wait('tab+enter')
+			tmps1=time.time()
 			teams = detect(teamsize)
 			if teams == 'detection error':
 				print(teams)
@@ -56,7 +59,9 @@ def main():
 		print('detected opponent team : '+str(teams[0]) )
 		print('detected allied team : '+str(teams[1]) )
 		(team, score) = teambuilder(teams[0],teams[1],battletype)
+		tmps=time.time()-tmps1
 		print('opptimal teams calculated : '+str(team)+':'+str(score))
+		print('in : '+str(tmps)+'s')
 		esq = list(set(team)-set(teams[1]))
 		print('esquade : '+str(esq))
 		keyboard.write(str(team))

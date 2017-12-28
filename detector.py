@@ -24,14 +24,16 @@ for c in char:
 	tabDIcones.append(cv2.imread(path+'images'+os.path.sep+'D'+c+'.jpg'))
 
 def detect(teamsize):		
-	keyboard.wait('tab+enter')
 	im = ImageGrab.grab()
 	basewidth = 800
 	wpercent = (basewidth / float(im.size[0]))
 	hsize = int((float(im.size[1]) * float(wpercent)))
 	im = im.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-	pilim1=im.crop((0,0,basewidth,hsize/2))
-	pilim2=im.crop((160+80*teamsize,hsize/2,basewidth,hsize))
+	im = im.crop((160,80,640,320))
+	w=im.size[0]
+	h=im.size[1]
+	pilim1=im.crop((0,0,w,h/2))
+	pilim2=im.crop((80*teamsize,h/2,w,h))
 	#pilim1.save('images'+os.path.sep+'sc.jpg', 'JPEG')
 	#pilim2.save('images'+os.path.sep+'sc2.jpg', 'JPEG')
 	enemies=[]
