@@ -18,12 +18,8 @@ ts = 6
 
 char = sorted(char)
 syn = pd.read_json(path+'syn',orient='split')
-
-#for i, val in enumerate(char):
-#	for j, val2 in enumerate(char):
-#		if(j<=i):
-#			temp = syn[j][i]
-#			syn[i][j] = temp
+tank = ['dva','ori','rei','win','zar']
+heal = ['mer','ana','luc','moi','zen']
 
 def calculSynergy(team):
 	score = 0
@@ -31,7 +27,13 @@ def calculSynergy(team):
 		for c2 in team[i+1:]:
 			score+=syn[c][c2]
 	return score
-
+def synBonus(team):
+	nbtank = min(len(list(set(tank) & set(team))),4)
+	nbheal = min(len(list(set(heal) & set(team))),4)	
+	bonus = 25*(2-abs(nbtank-2)) + 25*(2-abs(nbheal-2))
+	print(str(team)+str(bonus))
+	return bonus
+	
 i=0
 outfile = open(path + 'teamsyn', 'w+')
 
@@ -45,6 +47,7 @@ for a in range(nb-5):
 					for f in range(e+1,nb):
 						team = [char[a],char[b],char[c],char[d],char[e],char[f]]
 						score = calculSynergy(team)
+						score += synBonus(team)
 						tabtemp.append((char[a]+","+char[b]+","+char[c]+","+char[d]+","+char[e]+","+char[f], score))
 						i+=1;
 						print (i)
