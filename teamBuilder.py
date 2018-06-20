@@ -22,7 +22,7 @@ def teambuilder(opp,all,battletype):
 	scores = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 	for val in opp:
 		scores = scores + counter[val].values
-		scores = scores + bonus.loc[battletype].values
+	scores = scores + bonus.loc[battletype].values
 	maxCounter = sum(sorted(scores, reverse=True)[0:6])
 	scores = dict(zip(char, scores))
 	print(scores)
